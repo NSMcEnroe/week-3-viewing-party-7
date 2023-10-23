@@ -23,8 +23,8 @@ RSpec.describe 'Landing Page' do
   end 
 
   it 'lists out existing users' do 
-    user1 = User.create(name: "User One", email: "user1@test.com")
-    user2 = User.create(name: "User Two", email: "user2@test.com")
+    user1 = User.create(name: "User One", email: "user1@test.com", password_digest: "hey123")
+    user2 = User.create(name: "User Two", email: "user2@test.com", password_digest: "moo")
 
     expect(page).to have_content('Existing Users:')
 
