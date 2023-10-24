@@ -17,6 +17,7 @@ RSpec.describe "Loggging In" do
 
     expect(current_path).to eq(user_path(user))
   end
+  
   it "can reject a log in with invalid credentials" do
     user = User.create(name: "Weez", email: "w@gmail.com", password: "password")
 
