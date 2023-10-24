@@ -8,13 +8,15 @@ RSpec.describe "User Registration form" do
     email = "chuck@ymail.com"
     password = "password123"
 
-    fill_in :name, with: name
-    fill_in :email, with: email
-    fill_in :password, with: password
-    fill_in :password_confirmation, with: password
+    fill_in :user_name, with: name
+    fill_in :user_email, with: email
+    fill_in :user_password, with: password
+    fill_in :user_password_confirmation, with: password
 
     click_on "Create New User"
 
-    expect(current_path).to eq(user_path)
+    user = User.last
+
+    expect(current_path).to eq(user_path(user))
   end
 end
