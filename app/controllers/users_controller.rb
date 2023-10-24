@@ -4,7 +4,12 @@ class UsersController <ApplicationController
   end 
 
   def show 
-    @user = User.find(params[:id])
+    if session[:user_id]
+      @user = User.find(session[:user_id])
+    else
+      flash[:error] = "Sign in before going to your dashboard"
+      redirect_to "/"
+    end
   end 
 
   def create 
