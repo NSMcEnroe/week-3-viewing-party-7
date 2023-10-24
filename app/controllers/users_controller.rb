@@ -27,7 +27,7 @@ class UsersController <ApplicationController
       session[:user_id] = user.id
       redirect_to user_path(user)
     else 
-      flash[:error] =  "Your credentials are bad.  Try again."
+      flash.now[:error] =  "Your credentials are bad.  Try again."
       render :login_form
     end
   end
