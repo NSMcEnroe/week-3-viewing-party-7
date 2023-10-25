@@ -1,7 +1,12 @@
 class ViewingPartiesController < ApplicationController 
   def new
-    @user = User.find(params[:user_id])
-    @movie = Movie.find(params[:movie_id])
+    if session[:user_id] == params[:user_id]
+      @user = User.find(params[:user_id])
+      @movie = Movie.find(params[:movie_id])
+    else 
+      flash[:error] = "Please sign in first."
+      redirect_to "/"
+    end
   end 
   
   def create 

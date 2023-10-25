@@ -5,7 +5,9 @@ class MoviesController < ApplicationController
   end 
 
   def show 
+    if params[:user_id].present?
       @user = User.find(params[:user_id])
+    end
       @movie = Movie.find(params[:id])
   end 
 end 
