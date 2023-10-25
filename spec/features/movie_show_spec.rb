@@ -11,6 +11,17 @@ RSpec.describe 'Movies Index Page' do
   end 
 
   it 'shows all movies' do 
+    visit "/"
+
+    click_on "Log In"
+
+    fill_in :email, with: @user1.email
+    fill_in :password, with: @user1.password
+
+    click_on "Log In"
+
+    visit "users/#{@user1.id}"
+
     visit "users/#{@user1.id}"
 
     click_button "Find Top Rated Movies"
@@ -29,4 +40,10 @@ RSpec.describe 'Movies Index Page' do
     expect(page).to have_content(movie_1.description)
     expect(page).to have_content(movie_1.rating)
   end 
+
+  it "will not allow a user on their dashboard without logging in" do
+    visit "/dashboard"
+
+    expect(page).to have_content("Sign in before going to your dashboard")
+  end
 end

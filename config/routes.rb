@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/users/:user_id/movies/:id', to: 'movies#show', as: 'movie'
 
   resources :users, only: :show
+  get "/dashboard", to: "users#show"
     
   get "/login", to: "users#login_form"
   post "/login", to: "users#login"
